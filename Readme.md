@@ -15,16 +15,16 @@ import random
 import time
 import string
 
-def generate_password(length=12):
-    characters = string.ascii_letters + string.digits + string.punctuation
-    password = ''.join(random.choice(characters) for _ in range(length))
-    return password
-
-if __name__ == "__main__":
-    password_length = int(input("Enter the desired password length: "))
-    if password_length < 6:
-        print("Password length must be at least 6 characters.")
+password = []
+ok = True
+while ok:
+    n_letras = int(input("Ingrese la cantidad de caracteres de su contraseña: "))
+    if n_letras <= 6:
+        print("Cantidad de letras debe ser mayor a 6")
     else:
-        random.seed(time.time())
-        password = generate_password(password_length)
-        print("Generated Password:", password)
+        ok = False
+        time.sleep(0.5)
+        print("Procesando...")
+        password = ''.join(random.choices(string.ascii_letters + string.digits, k=n_letras))
+
+print(f'Tu nueva contraseña es: {password}. Usala con cuidado.')
